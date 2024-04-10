@@ -171,23 +171,17 @@ button:active {
 
 @media (max-width: 769px) {
   .logo {
-    position: fixed;
-    top: 2%;
-    left: 40%;
+    margin: 15px auto;
   }
-
+  
   .container {
     flex-direction: column;
-    width: 100%;
-    margin: 0;
+    width: 100%;    
     padding: 15px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
   }
 
   .output-container {
-    margin-top: 25px;
+    margin-top: 15px;
   }
 
   .form-container {
