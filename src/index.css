@@ -83,12 +83,12 @@ input:active {
 }
 
 #bill {
-  background-image: url('./img/icon-dollar.svg');
+  background-image: url('./assets/icon-dollar.svg');
   margin-bottom: 25px;
 }
 
 #person {
-  background-image: url('./img/icon-person.svg');
+  background-image: url('./assets/icon-person.svg');
 }
 
 #bill,
@@ -114,6 +114,7 @@ input:active {
   color: var(--very-dark-cyan);
   text-align: right;
   border: 2px solid var(--strong-cyan);
+  border-radius: 7px;
 }
 .custom-input::placeholder{
   text-align: center;
@@ -161,4 +162,43 @@ button:active {
   background-color: var(--strong-cyan);
   color: var(--very-dark-cyan);
   width: 100%;
+}
+.reset-btn:disabled {
+  background-color: hsl(183, 79%, 24%);
+  color: var(--very-dark-cyan);
+  cursor: not-allowed;
+}
+
+@media (max-width: 769px) {
+  .logo {
+    position: fixed;
+    top: 2%;
+    left: 40%;
+  }
+
+  .container {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .output-container {
+    margin-top: 25px;
+  }
+
+  .form-container {
+    padding: 5px;
+  }
+
+  .button-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .reset-btn {
+    margin-top: 20px;
+  }
 }
