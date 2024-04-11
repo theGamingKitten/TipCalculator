@@ -1,7 +1,8 @@
-export default function Button({ value, percentage, handleTip }) {
+export default function Button({ name, value, percentage, handleTip }) {
     return (
         <>
             <button 
+            name={name}
             onClick={e => handleTip(e.target.value)} 
             value={value}>
             {percentage}%

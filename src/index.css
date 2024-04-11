@@ -97,6 +97,15 @@ input:active {
   background-position: 10px center;
 }
 
+.error {
+  color: red;
+  font-size: 1rem;
+  float: right;
+}
+.hidden {
+  display: none;
+}
+
 .form-label {
   font-size: 1rem;
   color: var(--grayish-cyan);
@@ -178,10 +187,19 @@ button:active {
     flex-direction: column;
     width: 100%;    
     padding: 15px;
+    margin-bottom: -20px;
   }
 
   .output-container {
-    margin-top: 15px;
+    margin-top: 15px;    
+  }
+
+  .output-label {
+    font-size: 0.8rem;
+  }
+
+  .output-value {
+    font-size: 2rem;
   }
 
   .form-container {
@@ -192,7 +210,12 @@ button:active {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  button {
+    font-size: 1.3rem;
+  }
+
   .reset-btn {
     margin-top: 20px;
+    font-size: 1rem;
   }
 }

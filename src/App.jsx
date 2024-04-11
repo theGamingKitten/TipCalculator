@@ -37,6 +37,9 @@ function App() {
   const [totalAmount, setTotalAmount] = useState(0.00);
   {/* RESET BTN */}
   const [isResetDisabled, setIsResetDisabled] = useState(true);
+  {/*INPUT VALIDATION */}
+  const [isBillInvalid, setIsBillInvalid] = useState(false);
+  const [isPersonInvalid, setIsPersonInvalid] = useState(false);
 
   {/* DO THE MATH AND SHOW IT ON THE RIGHT SIDE */}
   useEffect(() => {
@@ -61,7 +64,13 @@ function App() {
 );
 
   function handleBill(e) {
-    setBill(e);
+    console.log(e);
+    if (e <= 0) {
+      setIsBillInvalid(true);
+    } else {
+      setIsBillInvalid(false);
+      setBill(e);
+    }
   }
 
   function handleTip(e) {
@@ -69,7 +78,12 @@ function App() {
   }
 
   function handlePerson(e) {
-    setPerson(e);
+    if (e <= 0) {
+      setIsPersonInvalid(true);
+    } else {
+      setIsPersonInvalid(false);
+      setPerson(e);
+    }
   }
 
   function handleReset() {
@@ -91,6 +105,8 @@ function App() {
           <Input 
             id='bill'
             text='Bill'
+            isInvalid={isBillInvalid}
+            errorMessage='Cant be zero'
             onChange={handleBill}
           />
           <span className='form-label'>Select Tip %</span>
@@ -98,6 +114,7 @@ function App() {
             {percentages.map(item => {
               return (
                 <Button 
+                  name='tipPercentage'
                   value={item.value}
                   percentage={item.percentage}
                   handleTip={handleTip}
@@ -105,12 +122,14 @@ function App() {
                 />
               )
             })}
-            <input type='text' name='custom' className='custom-input' placeholder='Custom'
+            <input type='text' name='tipPercentage' className='custom-input' placeholder='Custom'
             onChange={e => handleTip(1 + (e.target.value / 100))}></input>
           </div>
           <Input 
             id='person'
             text='Number of People'
+            isInvalid={isPersonInvalid}
+            errorMessage='Cant be zero'
             onChange={handlePerson}
           />
         </div>
