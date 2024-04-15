@@ -43,7 +43,7 @@ function App() {
 
   {/* DO THE MATH AND SHOW IT ON THE RIGHT SIDE */}
   useEffect(() => {
-    const total = ((bill * tip));
+    const total = ((bill * (1 + (tip / 100))));
     if(person === 0) {
       setTotalAmount(total.toFixed(2));
     } else {
@@ -75,6 +75,7 @@ function App() {
 
   function handleTip(e) {
     setTip(e);
+    console.log(e);
   }
 
   function handlePerson(e) {
@@ -90,8 +91,8 @@ function App() {
     setBill(0);
     setTip(0);
     setPerson(0);
-    setTipAmount(0.00);
-    setTotalAmount(0.00);
+    setTipAmount(0);
+    setTotalAmount(0);
     setIsResetDisabled(true);
   }
 
@@ -115,6 +116,7 @@ function App() {
               return (
                 <Button 
                   name='tipPercentage'
+                  tip={tip}
                   value={item.value}
                   percentage={item.percentage}
                   handleTip={handleTip}
@@ -123,7 +125,7 @@ function App() {
               )
             })}
             <input type='text' name='tipPercentage' className='custom-input' placeholder='Custom'
-            onChange={e => handleTip(1 + (e.target.value / 100))}></input>
+            onChange={e => handleTip(e.target.value)}></input>
           </div>
           <Input 
             id='person'
